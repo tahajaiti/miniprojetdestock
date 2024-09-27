@@ -113,7 +113,7 @@ int main() {
                 if (i == total) {
                         printf(BRED"\nle livre nexiste pas.\n");
                         sleep(1);}break;
-            case 5:
+            case 5: //delete
                 printf(BYEL"Entrez le titre du livre a supprimer: ");
                 fgets(search, sizeof(search), stdin);
                 search[strcspn(search, "\n")] = '\0';
@@ -131,8 +131,11 @@ int main() {
                 if (i == total) {
                     printf(BRED"le livre nexiste pas.\n");sleep(1);}
 
-            case 6:
-
+            case 6://show stock
+                int stock = 0;
+                for (i = 0; i < total; i++) {
+                    stock += quantite[i];}
+                printf(BYEL"Nombre total de livres en stock: %d\n", stock);sleep(1);break;
         default:
             break;
         }
