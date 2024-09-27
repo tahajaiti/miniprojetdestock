@@ -25,9 +25,12 @@ int main() {
         printf("5.Supprimer un livre du stock.\n");
         printf("6.Afficher le nombre total de livres en stock.\033[0m\n");
         printf("\033[1;31m7.Quitter.\n\033[0m");
-        scanf("%d", &choice);
         
-        printf("hi");
+        if (scanf("%d", &choice) != 1) {
+            printf("\n\033[1;31mEntrée invalide. Veuillez entrer un nombre.\033[0m\n");
+            while (getchar() != '\n');
+            continue;
+        }
 
         switch (choice){
             case 1:
@@ -37,9 +40,15 @@ int main() {
                     printf("\nauteur de livre: ");
                     scanf("%49s", &auteur[total]);
                     printf("\nprix de livre: ");
-                    scanf("%f", &prix[total]);
+                    while (scanf("%f", &prix[total]) != 1) {
+                        printf("\n\033[1;31mEntree invalide. entrer un prix valide: \033[0m\n");
+                        while (getchar() != '\n');
+                    }
                     printf("\nquantite de livre: ");
-                    scanf("%d", &quantite[total]);
+                    while (scanf("%d", &quantite[total]) != 1) {
+                        printf("\n\033[1;31mEntree invalide. entrer un quntite valide: \033[0m\n");
+                        while (getchar() != '\n');
+                    }
 
                     printf("\n\033[1;32mCette operation est un succes. \n\033[0m");
 
@@ -56,8 +65,6 @@ int main() {
                 scanf("%s", &titre);
 
         default:
-            printf("\n\033[1;31mChoix invalide. Veuillez essayer à nouveau.\033[0m\n");
-            sleep(1);
             break;
         }
 
