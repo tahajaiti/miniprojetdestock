@@ -3,6 +3,16 @@
 #include <unistd.h>
 #include <ctype.h>
 
+#define WHT "\e[0;37m"
+#define BBLK "\e[1;30m"
+#define BRED "\e[1;31m"
+#define BGRN "\e[1;32m"
+#define BYEL "\e[1;33m"
+#define BBLU "\e[1;34m"
+#define BMAG "\e[1;35m"
+#define BCYN "\e[1;36m"
+#define BWHT "\e[1;37m"
+
 
 int main() {
 
@@ -18,97 +28,101 @@ int main() {
     int i,new;
 
     do{
-        printf("\n\033[1;34m ***** MENU ***** \033[0m\n");
-        printf("\033[1;36m1.Ajouter un livre au stock.\n");
+        printf(BBLU"\n***** MENU *****\n");
+        printf(BWHT"1.Ajouter un livre au stock.\n");
         printf("2.Afficher tous les livres disponibles.\n");
         printf("3.Rechercher un livre par son titre.\n");
         printf("4.Mettre a jour la quantite d'un livre.\n");
         printf("5.Supprimer un livre du stock.\n");
-        printf("6.Afficher le nombre total de livres en stock.\033[0m\n");
-        printf("\033[1;31m7.Quitter.\n\033[0m");
-        printf("\033[1;33mEntrer un nombre: \033[0m");
+        printf("6.Afficher le nombre total de livres en stock.\n");
+        printf(BRED"7.Quitter.\n");
+        printf(BWHT"Entrer un nombre: ");
         
         if (scanf("%d", &choice) != 1) {
-            printf("\n\033[1;31mEntrée invalide. \033[0m\n");
+            printf(BRED"\nEntrée invalide.\n");
             sleep(1);
             while (getchar() != '\n');
             continue;}
+            
+        getchar();
 
         switch (choice){
             case 1: //ajouter un stock
                 if (total < MAX){
                     getchar();
 
-                    printf("\ntitre de livre: ");
+                    printf(BYEL"\ntitre de livre: ");
                     fgets(titre[total], 100, stdin);
                     titre[total][strcspn(titre[total], "\n")] = '\0';
                     
-                    printf("\nauteur de livre: ");
+                    printf(BYEL"\nauteur de livre: ");
                     fgets(auteur[total], 100, stdin);
                     auteur[total][strcspn(auteur[total], "\n")] = '\0';
 
-                    printf("\nprix de livre: ");
+                    printf(BYEL"\nprix de livre: ");
                     while (scanf("%f", &prix[total]) != 1) {
-                        printf("\n\033[1;31mEntree invalide. entrer un prix valide: \033[0m");
+                        printf(BRED"\nEntree invalide. entrer un prix valide: ");
                         while (getchar() != '\n');
                     }
-                    printf("\nquantite de livre: ");
+                    printf(BYEL"\nquantite de livre: ");
                     while (scanf("%d", &quantite[total]) != 1) {
-                        printf("\n\033[1;31mEntree invalide. entrer un quntite valide: \033[0m");
+                        printf(BRED"\nEntree invalide. entrer un quntite valide: ");
                         while (getchar() != '\n');
                     }
 
-                    printf("\n\033[1;32mCette operation est un succes. \n\033[0m");
+                    printf(BGRN"\nCette operation est un succes. \n");
 
                     total++;sleep(2);}
                 else {
-                    printf("\n\033[1;31mLe stock maximum est atteint. \n\033[0m");sleep(2);}break;
+                    printf(BRED"\nLe stock maximum est atteint. \n");sleep(2);}break;
             case 2: //afficher le stock
                 for (int i = 0; i < total; i++){
-                    printf("\n\033[1;33m%d.Titre: %s , Auteur: %s , Prix: %.2f DH, Quantite: %d\n\033[0m", i+1,
+                    printf(BYEL"\n%d.Titre: %s , Auteur: %s , Prix: %.2f DH, Quantite: %d\n", i+1,
                     titre[i], auteur[i], prix[i], quantite[i]);
-                }sleep(3); break;
+                }
+                if (total == 0){
+                    printf(BRED"il n y a pas de stock");} sleep(3); break;
             case 3: // search for stock
-                getchar();
-
-                printf("\nEntrez le titre du livre a rechercher: ");
+                printf(BYEL"\nEntrez le titre du livre a rechercher: ");
                 fgets(search, 100, stdin);
                 search[strcspn(search, "\n")] = '\0';
 
                 for (i = 0; i < total; i++) {
                   if (strcmp(titre[i], search) == 0) {
-                    printf("\n\033[1;33mLivre trouve - Titre: %s, Auteur: %s, Prix: %.2f, Quantite: %d\n\033[0m", titre[i], auteur[i], prix[i], quantite[i]);
+                    printf(BGRN"\nle livre existe " BYEL "- Titre: %s, Auteur: %s, Prix: %.2f, Quantite: %d\n", titre[i], auteur[i], prix[i], quantite[i]);
                     sleep(2);
                     break;
                     }
                 }
                 if (i == total) {
-                    printf("\n\033[1;33mle livre nexiste pas.\n\033[0m");
+                    printf(BRED"\nle livre nexiste pas.\n");
                     sleep(1);
                     break;}
             case 4: //update stock
-                printf("Entrez le titre du livre a mettre a jour: ");
+                printf(BYEL"Entrez le titre du livre a mettre a jour: ");
                 fgets(search, 100, stdin);
+                getchar();
                 search[strcspn(search, "\n")] = '\0';
 
                 for (i = 0; i < total; i++) {
                     if (strcmp(titre[i], search) == 0) {
-                        printf("Entrez la nouvelle quantite: ");
+                        printf(BYEL"Entrez la nouvelle quantite: ");
                         scanf("%d", &new);
                         getchar();
                         quantite[i] = new;
-                        printf("Quantite mise a jour.\n");
+                        printf(BGRN"Quantite mise a jour.\n");
                         break;
                     }
                 }
                 if (i == total) {
-                        printf("\n\033[1;33mle livre nexiste pas.\n\033[0m");
+                        printf(BRED"\nle livre nexiste pas.\n");
                         sleep(1);}break;
         default:
             break;
         }
-
     } while (choice !=7);
+
+    printf(BMAG"\nPasse une bonne journee!"WHT);
     
     return 0;
 }
