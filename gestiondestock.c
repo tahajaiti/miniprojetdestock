@@ -128,8 +128,10 @@ int main() {
                         }
                         total--;
                         printf(BRED"Livre supprime.\n");sleep(1);break;}}
-            if (i == total) {
-                printf(BRED"le livre nexiste pas.\n");sleep(1);}
+                if (i == total) {
+                    printf(BRED"le livre nexiste pas.\n");sleep(1);}
+
+            case 6:
 
         default:
             break;
