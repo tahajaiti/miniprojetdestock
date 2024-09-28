@@ -16,15 +16,15 @@
 
 
 int main() {
-    const int MAX = 100; //maximum stock
+    const int MAX = 500; //maximum stock
 
-    char titre[MAX][100]; //pour titre
-    char auteur[MAX][100]; // pour auteur
+    char titre[MAX][500]; //pour titre
+    char auteur[MAX][500]; // pour auteur
     float prix[MAX]; // pour prix
     int quantite[MAX]; // pour quntite
     int total = 0; // le total de stock 
     int choice; // le choix de menu
-    char search[100]; // le caractere de recherche
+    char search[500]; // le variable de recherche
     int i, j, new, stock = 0; // varibales de les boucles et le mettre a jour et total de stock
 
     do{ //menu
@@ -62,23 +62,23 @@ int main() {
                     while (scanf("%f", &prix[total]) != 1) {
                         printf(BRED"\nEntree invalide." BYEL" Entrer un prix valide: ");
                         while (getchar() != '\n');}
-                    printf(BYEL"\nquantite de livre: ");
+                    printf(BYEL"\nQuantite de livre: ");
                     while (scanf("%d", &quantite[total]) != 1) {
                         printf(BRED"\nEntree invalide." BYEL" Entrer un prix valide: ");
                         while (getchar() != '\n');}
 
                     printf(BGRN"\nCette operation est un succes. \n");
 
-                    total++;sleep(2);}
+                    total++;sleep(2);break;}
                 else {
-                    printf(BRED"\nLe stock maximum est atteint. \n");sleep(2);}break;
+                    printf(BRED"\nLe stock maximum est atteint. \n");sleep(2);break;}
 
             case 2: //afficher le stock
                 for (i = 0; i < total; i++){
                     printf(BYEL"\n%d.Titre: %s , Auteur: %s , Prix: %.2f DH, Quantite: %d\n", i+1,
-                    titre[i], auteur[i], prix[i], quantite[i]);sleep(2);break;}
+                    titre[i], auteur[i], prix[i], quantite[i]);}
                 if (total == 0){
-                    printf(BRED"Il n y a pas de stock");} sleep(3); break;
+                    printf(BRED"Il n y a pas de stock");}sleep(3);break;
 
             case 3: // search for stock
                 printf(BYEL"\nEntrez le titre du livre a rechercher: ");
