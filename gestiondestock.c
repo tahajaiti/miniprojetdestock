@@ -28,7 +28,7 @@ int main() {
     int i, j, new, stock = 0; // varibales de les boucles et le mettre a jour et total de stock
 
     do{ //menu
-        printf(BBLU"\n***** MENU *****\n");
+        printf(BMAG"\n***** MENU *****\n");
         printf(BWHT"1.Ajouter un livre au stock.\n");
         printf("2.Afficher tous les livres disponibles.\n");
         printf("3.Rechercher un livre par son titre.\n");
@@ -75,7 +75,7 @@ int main() {
 
             case 2: //afficher le stock
                 for (i = 0; i < total; i++){
-                    printf(BYEL"\n%d.Titre: %s , Auteur: %s , Prix: %.2f DH, Quantite: %d\n", i+1,
+                    printf(BYEL"\n%d.Titre: %s , Auteur: %s "BWHT"|| "BGRN"Prix: %.2f DH, Quantite: %d", i+1,
                     titre[i], auteur[i], prix[i], quantite[i]);}
                 if (total == 0){
                     printf(BRED"Il n y a pas de stock");}sleep(3);break;
@@ -87,7 +87,7 @@ int main() {
 
                 for (i = 0; i < total; i++) {
                   if (strcmp(titre[i], search) == 0) {
-                    printf(BGRN"\nLe livre existe " BYEL ": Titre: %s, Auteur: %s, Prix: %.2f, Quantite: %d\n", titre[i], auteur[i], prix[i], quantite[i]);
+                    printf(BGRN"\nLe livre existe " BYEL ": Titre: %s, Auteur: %s "BWHT"|| "BGRN"Prix: %.2f, Quantite: %d\n", titre[i], auteur[i], prix[i], quantite[i]);
                     sleep(2);
                     break;}}
 
