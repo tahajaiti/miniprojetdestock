@@ -20,13 +20,13 @@
 int main() {
     const int MAX = 500; //maximum de livres
 
-    char titre[MAX][500]; //pour titre
-    char auteur[MAX][500]; // pour auteur
+    char titre[MAX][100]; //pour titre
+    char auteur[MAX][100]; // pour auteur
     float prix[MAX]; // pour prix
     int quantite[MAX]; // pour quntite
     int total = 0; // le total de stock 
     int choice; // le choix de menu
-    char search[500]; // le variable de recherche
+    char search[100]; // le variable de recherche
     int i, j, new, stock = 0; // varibales de les boucles et le mettre a jour et total de stock
 
     do{ //menu
