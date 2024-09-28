@@ -78,7 +78,7 @@ int main() {
                     printf(BYEL"\n%d.Titre: %s , Auteur: %s "BWHT"|| "BGRN"Prix: %.2f DH, Quantite: %d", i+1,
                     titre[i], auteur[i], prix[i], quantite[i]);}
                 if (total == 0){
-                    printf(BRED"Il n y a pas de stock");}sleep(3);break;
+                    printf(BRED"Il n y a pas de stock");}sleep(2);break;
 
             case 3: // search for stock
                 printf(BYEL"\nEntrez le titre du livre a rechercher: ");
@@ -127,16 +127,16 @@ int main() {
                             prix[j] = prix[j + 1];
                             quantite[j] = quantite[j + 1];}
                         total--;
-                        printf(BRED"Livre supprime.\n");sleep(1);break;}}
+                        printf(BRED"Livre supprime.\n");}}
 
                 if (i == total) {
-                    printf(BRED"Le livre nexiste pas.\n");sleep(1);break;}
+                    printf(BRED"Le livre nexiste pas.\n");}sleep(1);break;
 
             case 6://show stock
                 for (i = 0; i < total; i++) {
                     stock += quantite[i];}
 
-                printf(BYEL"Nombre total de livres en stock: %d\n"BCYN, stock);sleep(1);break;
+                printf(BYEL"Nombre total de livres en stock: %d\n"BCYN, stock);sleep(2);break;
         default:
             break;}} while (choice !=7);
 
