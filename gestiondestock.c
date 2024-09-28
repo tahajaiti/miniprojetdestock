@@ -16,7 +16,7 @@
 
 
 int main() {
-    const int MAX = 500; //maximum stock
+    const int MAX = 500; //maximum de livres
 
     char titre[MAX][500]; //pour titre
     char auteur[MAX][500]; // pour auteur
