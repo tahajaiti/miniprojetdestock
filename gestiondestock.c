@@ -43,7 +43,7 @@ int main() {
         if (scanf("%d", &choice) != 1) {
             printf(BRED"\nEntree invalide.\n");
             sleep(1);
-            while (getchar() != '\n');
+            while (getchar() != '\n'); //clearing the buffer
             continue;
         }
         getchar();
@@ -63,11 +63,11 @@ int main() {
                     printf(BYEL"\nPrix de livre: ");
                     while (scanf("%f", &prix[total]) != 1) {
                         printf(BRED"\nEntree invalide." BYEL" Entrer un prix valide: ");
-                        while (getchar() != '\n');}
+                        while (getchar() != '\n');}//clearing the buffer
                     printf(BYEL"\nQuantite de livre: ");
                     while (scanf("%d", &quantite[total]) != 1) {
                         printf(BRED"\nEntree invalide." BYEL" Entrer un quantite valide: ");
-                        while (getchar() != '\n');}
+                        while (getchar() != '\n');} //clearing the buffer
 
                     printf(BGRN"\nCette operation est un succes. \n");
 
@@ -102,7 +102,7 @@ int main() {
                 printf(BYEL"Entrez le titre du livre a mettre a jour: ");
                 fgets(search, sizeof(search), stdin);
                 search[strcspn(search, "\n")] = '\0';
-
+                
                 for (i = 0; i < total; i++) {
                     if (strcmp(titre[i], search) == 0) {
                         printf(BYEL"Entrez la nouvelle quantite: ");
@@ -138,8 +138,8 @@ int main() {
                 for (i = 0; i < total; i++) {
                     stock += quantite[i];}
 
-                printf(BYEL"Nombre total de livres en stock: %d\n"BCYN, stock);
-                printf(BYEL"Les quantites de tous les livres: %d\n"BCYN, total);sleep(2);break;
+                printf(BYEL"Nombre total de livres en stock: %d\n"BCYN, total);
+                printf(BYEL"Les quantites de tous les livres: %d\n"BCYN, stock);sleep(2);break;
         default:
             break;}} while (choice !=7);
 
