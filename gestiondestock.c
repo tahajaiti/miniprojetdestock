@@ -66,7 +66,7 @@ int main() {
                         while (getchar() != '\n');}
                     printf(BYEL"\nQuantite de livre: ");
                     while (scanf("%d", &quantite[total]) != 1) {
-                        printf(BRED"\nEntree invalide." BYEL" Entrer un prix valide: ");
+                        printf(BRED"\nEntree invalide." BYEL" Entrer un quantite valide: ");
                         while (getchar() != '\n');}
 
                     printf(BGRN"\nCette operation est un succes. \n");
