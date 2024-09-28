@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <ctype.h>
 
+//varibales de color
 #define WHT "\e[0;37m"
 #define BBLK "\e[1;30m"
 #define BRED "\e[1;31m"
@@ -15,16 +16,16 @@
 
 
 int main() {
-    const int MAX = 100;
+    const int MAX = 100; //maximum stock
 
-    char titre[MAX][100];
-    char auteur[MAX][100];
-    float prix[MAX];
-    int quantite[MAX];
-    int total = 0;
-    int choice;
-    char search[100];
-    int i,j,new;
+    char titre[MAX][100]; //pour titre
+    char auteur[MAX][100]; // pour auteur
+    float prix[MAX]; // pour prix
+    int quantite[MAX]; // pour quntite
+    int total = 0; // le total de stock 
+    int choice; // le choix de menu
+    char search[100]; // le caractere de recherche
+    int i, j, new, stock = 0; // varibales de les boucles et le mettre a jour et total de stock
 
     do{ //menu
         printf(BBLU"\n***** MENU *****\n");
@@ -71,13 +72,14 @@ int main() {
                     total++;sleep(2);}
                 else {
                     printf(BRED"\nLe stock maximum est atteint. \n");sleep(2);}break;
+
             case 2: //afficher le stock
                 for (i = 0; i < total; i++){
                     printf(BYEL"\n%d.Titre: %s , Auteur: %s , Prix: %.2f DH, Quantite: %d\n", i+1,
-                    titre[i], auteur[i], prix[i], quantite[i]);
-                }
+                    titre[i], auteur[i], prix[i], quantite[i]);sleep(2);break;}
                 if (total == 0){
                     printf(BRED"Il n y a pas de stock");} sleep(3); break;
+
             case 3: // search for stock
                 printf(BYEL"\nEntrez le titre du livre a rechercher: ");
                 fgets(search, sizeof(search), stdin);
@@ -87,13 +89,13 @@ int main() {
                   if (strcmp(titre[i], search) == 0) {
                     printf(BGRN"\nLe livre existe " BYEL ": Titre: %s, Auteur: %s, Prix: %.2f, Quantite: %d\n", titre[i], auteur[i], prix[i], quantite[i]);
                     sleep(2);
-                    break;
-                    }
-                }
+                    break;}}
+
                 if (i == total) {
                     printf(BRED"\nLe livre nexiste pas.\n");
                     sleep(1);
                     break;}break;
+
             case 4: //update stock
                 printf(BYEL"Entrez le titre du livre a mettre a jour: ");
                 fgets(search, sizeof(search), stdin);
@@ -106,12 +108,12 @@ int main() {
                         getchar();
                         quantite[i] = new;
                         printf(BGRN"Quantite mise a jour.\n");
-                        break;
-                    }
-                }
+                        sleep(1);break;}}
+                    
                 if (i == total) {
-                        printf(BRED"\nLe livre nexiste pas.\n");
-                        sleep(1);}break;
+                    printf(BRED"\nLe livre nexiste pas.\n");
+                    sleep(1);}break;
+
             case 5: //delete
                 printf(BYEL"Entrez le titre du livre a supprimer: ");
                 fgets(search, sizeof(search), stdin);
@@ -123,22 +125,20 @@ int main() {
                             strcpy(titre[j], titre[j + 1]);
                             strcpy(auteur[j], auteur[j + 1]);
                             prix[j] = prix[j + 1];
-                            quantite[j] = quantite[j + 1];
-                        }
+                            quantite[j] = quantite[j + 1];}
                         total--;
                         printf(BRED"Livre supprime.\n");sleep(1);break;}}
+
                 if (i == total) {
                     printf(BRED"Le livre nexiste pas.\n");sleep(1);break;}
 
             case 6://show stock
-                int stock = 0;
                 for (i = 0; i < total; i++) {
                     stock += quantite[i];}
+
                 printf(BYEL"Nombre total de livres en stock: %d\n"BCYN, stock);sleep(1);break;
         default:
-            break;
-        }
-    } while (choice !=7);
+            break;}} while (choice !=7);
 
     printf(BMAG"\nPasse une bonne journee!"WHT);
     
