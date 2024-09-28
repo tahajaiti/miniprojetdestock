@@ -10,9 +10,11 @@
 #define BGRN "\e[1;32m"
 #define BYEL "\e[1;33m"
 #define BBLU "\e[1;34m"
-#define BMAG "\e[1;35m"
+#define BMAG "\e[1;95m"
 #define BCYN "\e[1;36m"
 #define BWHT "\e[1;37m"
+#define BWH "\e[4;37m"
+#define CR "\e[0m"
 
 
 int main() {
@@ -28,7 +30,7 @@ int main() {
     int i, j, new, stock = 0; // varibales de les boucles et le mettre a jour et total de stock
 
     do{ //menu
-        printf(BMAG"\n***** MENU *****\n");
+        printf(BMAG"\n\t***** MENU *****\n"CR);
         printf(BWHT"1.Ajouter un livre au stock.\n");
         printf("2.Afficher tous les livres disponibles.\n");
         printf("3.Rechercher un livre par son titre.\n");
@@ -36,7 +38,7 @@ int main() {
         printf("5.Supprimer un livre du stock.\n");
         printf("6.Afficher le nombre total de livres en stock.\n");
         printf(BRED"7.Quitter.\n");
-        printf(BWHT"Entrer un nombre: ");
+        printf(BWH"Entrer un nombre: "CR);
         
         if (scanf("%d", &choice) != 1) {
             printf(BRED"\nEntree invalide.\n");
