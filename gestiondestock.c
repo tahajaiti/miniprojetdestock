@@ -136,7 +136,8 @@ int main() {
                 for (i = 0; i < total; i++) {
                     stock += quantite[i];}
 
-                printf(BYEL"Nombre total de livres en stock: %d\n"BCYN, stock);sleep(2);break;
+                printf(BYEL"Nombre total de livres en stock: %d\n"BCYN, stock);
+                printf(BYEL"Les quantites de tous les livres: %d\n"BCYN, total);sleep(2);break;
         default:
             break;}} while (choice !=7);
 
