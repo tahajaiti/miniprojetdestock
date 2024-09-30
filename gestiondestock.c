@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <ctype.h>
 
-//varibales de color
+//varibales de color 
 #define WHT "\e[0;37m"
 #define BBLK "\e[1;30m"
 #define BRED "\e[1;31m"
