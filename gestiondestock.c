@@ -44,8 +44,8 @@ int main() {
             printf(BRED"\nEntree invalide.\n");
             sleep(1);
             while (getchar() != '\n'); //clearing the buffer
-            continue;
-        }
+            continue;}
+
         getchar();
 
         switch (choice){
@@ -111,10 +111,10 @@ int main() {
                         quantite[i] = new;
                         printf(BGRN"Quantite mise a jour.\n");
                         sleep(1);break;}}
-                    
+                      
                 if (i == total) {
                     printf(BRED"\nLe livre nexiste pas.\n");
-                    sleep(1);}break;
+                    sleep(1);break;}break;
 
             case 5: //delete
                 printf(BYEL"Entrez le titre du livre a supprimer: ");
@@ -131,7 +131,7 @@ int main() {
                         total--;
                         printf(BRED"Livre supprime.\n");}}
 
-                if (i == total) {
+                if (i == total ) {
                     printf(BRED"Le livre nexiste pas.\n");}sleep(1);break;
 
             case 6://show stock
